@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>主页面</title>
+     <link th:href="@{/layui/css/layui.css}" rel="stylesheet" />
+     <link th:href="@{/layui/css/mobile.css}" rel="stylesheet" />
+    <script type="text/javascript" src="../static/jquery/jquery.js" th:src="@{/jquery/jquery.js}"></script>
+    <script type="text/javascript" src="../static/layui/layui.js" th:src="@{/layui/layui.js}"></script>
+</head>
+<body>
+<div class="table" style="margin-top: 50px;">
+	<form class="layui-form" id="userForm" method="post" >
+		<div style="margin-top: 15px;">
+			<img class="icon" src="/images/logo.png"/>
+			<label class="title">电影天堂</label>
+		</div>
+
+		<div class="column">
+			<label class="label">用户名：</label>
+			<input type="text" name="username" lay-verify="required" autocomplete="off" class="input">
+		</div>
+
+
+		<div class="column">
+			<label class="label">密码：</label>
+			<input type="password" name="password" lay-verify="pass" placeholder="请输入6-12位密码" autocomplete="off" class="input">
+		</div>
+
+		<div class="column">
+			<label class="label">手机号：</label>
+			<input type="tel" name="telephone" lay-verify="required|phone" autocomplete="off" class="input">
+		</div>
+
+		<div class="column">
+			<label class="label">邮箱：</label>
+			<input type="text" name="email" lay-verify="email" autocomplete="off" class="input">
+		</div>
+
+		<div style="margin-left: 250px;">
+			<input  id="protocol" type="checkbox"  lay-skin="primary" title="已阅读《xxx协议》" lay-filter="protocol" >
+		</div>
+
+		<div class="column">
+			<button id="submit" class="button" lay-filter="*" lay-submit disabled='disable'>注册</button>
+		</div>
+
+
+	</form>
+
+</div>
+
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function(){
+        var form = layui.form
+            ,layer = layui.layer
+            ,layedit = layui.layedit
+            ,laydate = layui.laydate;
+
+        //日期
+        laydate.render({
+            elem: '#date'
+        });
+
+        //创建一个编辑器
+        var editIndex = layedit.build('LAY_demo_editor');
+
+        //自定义验证规则
+        form.verify({
+            title: function(value){
+                if(value.length < 5){
+                    return '标题至少得5个字符啊';
+                }
+            }
+            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+            ,content: function(value){
+                layedit.sync(editIndex);
+            }
+        });
+        form.on('checkbox(protocol)', function(data){
+            if(data.elem.checked)
+            {
+                document.getElementById('submit').disabled=false;
+            }
+            else
+            {
+                document.getElementById('submit').disabled='disable';
+            }
+        });
+        //监听提交
+        form.on('submit(*)', function(data) {
+            $.ajax({
+                type:"POST",
+                url:"/sys/user/register",
+				data:$("#userForm").serialize(),
+				success:function (data) {
+                    if (data.status == 200) {
+                        layer.alert(data.msg, {
+                            icon: 1,
+                            skin: 'layer-ext-moon'
+                        }, function () {
+                            window.location.href = "/main.html";
+                        });
+                    } else {
+                        layer.alert(data.msg, {
+                            icon: 2,
+                            skin: 'layer-ext-moon'
+                        });
+                    }
+                }
+			})
+
+//				$("#userForm").serialize(), function (data) {
+//
+//            });
+            return false;
+
+        });
+    });
+</script>
+
+</body>
+
+</html>

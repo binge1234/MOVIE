@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>电影天堂</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/login.css">
+<link rel="stylesheet"
+	href="../../bootstrap/css/bootstrapValidator.min.css">
+<script src="../../jquery/jquery.min.js"></script>
+<script src="../../bootstrap/js/bootstrap.min.js"></script>
+<script src="../../bootstrap/js/bootstrapValidator.min.js"></script>
+</head>
+<style>
+img
+{
+	width:auto;
+	height:auto;
+	max-width:100%;
+	max-height:100%;
+}
+body{
+	overflow-y:hidden;
+}
+#page{
+  position:absolute;
+  width:100%;
+}
+.container-content
+{
+	padding-top:60px;
+	color: #fff;
+}
+.overlay
+{
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+.form-wrap {
+    border-top: 10px solid #FBB448;
+    position: relative;
+    width: 100%;
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.15);
+}
+.form-wrap .tab-content {
+    z-index: 10;
+    position: relative;
+    clear: both;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 30px;
+}
+.form-wrap label{
+	font-size:15px;
+}
+.form-wrap h3{
+	padding-bottom:20px;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    height: 30px;
+    padding: 15px 20px;
+    font-size: 14px;
+    line-height: 1.42857;
+    color: #fff !important;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+.form-group{
+	padding:3px 0;
+}
+.btn-primary {
+    background: #FBB448;
+    color: #fff;
+    border: 2px solid #FBB448 !important;
+}
+.button-group{
+	margin-top:45px;
+}
+.small-graph{
+	color:#fff;
+	padding:0 40px;
+	font-size:13px;
+}
+.select
+{
+    display: inline;
+    width: 28%;
+    height: 30px;
+    font-size: 14px;
+    line-height: 1.42857;
+    color: #fff !important;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+.select option
+{
+    background-color:#000;
+    color: #fff !important;
+}
+
+</style>
+<body>
+
+<span th:include="basepath::html"></span>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" 
+role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="model">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" 
+						aria-hidden="true">×
+				</button>
+			</div>
+			<div class="modal-body">
+				请在指定邮箱激活
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" 
+						data-dismiss="modal">关闭
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+	<div id="page">
+		<img src="image/login/bg7.jpg" alt="">
+		<div class="overlay"></div>
+	</div>
+	<div class="container">
+		<div class="container-content">
+			<div id="register" class="row">
+				<div class="col-md-4 col-md-push-4">
+					<div class="form-wrap">
+						<div class="tab">
+							<div class="tab-content">
+								<div class="tab-content-inner active">
+									<h3 class="cursive-font text-center">用户注册</h3>
+									<form action="register_create" class="form-horizontal"
+										id="register-form" method="post">
+										<div class="form-group">
+											<label for="username" class="control-label col-md-4">昵&ensp;称</label>
+											<div class="col-md-8 ">
+												<input type="text" class="form-control" placeholder="昵称"
+													name="username" id="username">
+											</div>
+										</div>
+										<div class="row form-group">
+											<label for="password" class="control-label col-md-4">密&ensp;码</label>
+											<div class="col-md-8">
+												<input type="password" class="form-control" placeholder="请输入密码"
+													name="password" id="password">
+											</div>
+										</div>
+										<div class="row form-group">
+											<label for="password" class="control-label col-md-4">确认密码</label>
+											<div class="col-md-8">
+												<input type="password" class="form-control"
+													placeholder="请再次输入密码" name="confirmPassword">
+											</div>
+										</div>
+										<div class="row form-group">
+											<label for="email" class="control-label col-md-4">邮&ensp;箱</label>
+											<div class="col-md-8">
+												<input type="text" class="form-control" placeholder="请输入邮箱"
+													name="email" id="email">
+											</div>
+										</div>
+							
+										<div class="row form-group button-group">
+											<div class="col-md-6">
+												<a type="button" class="btn btn-primary btn-block"
+													href="/index">返回</a>
+											</div>
+											<div class="col-md-6">
+												<input type="submit" class="btn btn-primary btn-block"
+													value="下一步" id="next">
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		$(function() {
+			var baseUrl = getBaseUrl();
+			$('#register-form').bootstrapValidator({
+				message : 'This value is not valid',
+				fields : {
+					username : {
+						validators : {
+							notEmpty : {
+								message : '用户名不能为空'
+							},
+		                    stringLength: {
+		                        min: 6,
+		                        max: 12,
+		                        message: '用户名长度必须在6到12位之间'
+		                    },
+							remote:{
+								url:basePath+'/register_existCheck',
+								message: '用户已存在',
+								delay :  5000,
+								type: 'GET',
+								dataType: 'json'
+							}
+						}
+					},
+					password : {
+						validators : {
+							notEmpty : {
+								message : '密码不能为空'
+							},
+		                    stringLength: {
+		                        min: 6,
+		                        max: 12,
+		                        message: '密码长度必须在6到12位之间'
+		                    },
+						}
+					},
+					confirmPassword : {
+						validators : {
+							notEmpty : {
+								message : '密码不能为空'
+							},
+							identical : {
+								field : 'password',
+								message : '前后密码不一致'
+							}
+						}
+					},
+					email : {
+						validators : {
+							notEmpty : {
+								message : '邮箱不能为空'
+							},
+	                    emailAddress: {
+	                        message: '邮箱地址格式有误'
+	                    }
+						}
+					}
+				}
+			});
+			$("#next").click(
+					function(e) {
+						$('#register-form').bootstrapValidator('validate');
+						var bootstrapValidator = $("#register-form").data(
+								'bootstrapValidator');
+						if (bootstrapValidator.isValid()) {
+							var username = $('#username').val();
+							var password = $('#password').val();
+							var email = $('email').val();
+					       
+					        $('#model').modal('show');
+					        // 获取baseUrl
+					        $.ajax({
+					            // 异步方式
+					            url: baseUrl + '/toRegister',
+					            async: true,
+					            type: "post",
+					            datatype: 'json',
+					            data: {
+					                "username" : username,
+					                "password" : password,
+					                "email" : email
+					            },
+					            success: function (data) {
+					                alert("保存成功...");
+					            }
+					        });
+						}
+					});
+		});
+	</script>
+</body>
+</html>

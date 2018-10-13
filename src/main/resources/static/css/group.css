@@ -1,0 +1,148 @@
+.slot{
+	width: 30%;
+	min-height: 500px;
+	float: left;
+	border: 2px solid #0abebf;
+	padding: 1px;
+}
+.empty-slot{
+	border:  1px dashed #ddd;
+}
+.slot-list{
+	list-style: none;
+	padding: 0;
+	font-size: 20px;
+	min-height: 500px;
+	max-height: 500px;
+	cursor:pointer;
+	margin: 0;
+	overflow: scroll;
+	overflow-x: hidden;
+}
+.slot-item{
+	padding: 1px 10px;
+	border: 1px solid #18a0b7;
+
+}
+.slot-item:not(:last-child){
+	border-bottom-color: transparent;
+}
+
+.slot:not(:last-child){
+	margin-right: 3%;
+}
+.drag-item{
+	position: absolute;
+	opacity: .8;
+}
+.placeholder{
+	border: 2px dashed #349ce4;
+}
+.clearfix:after{
+	content:".";
+	display:block;
+	height:0;
+	clear:both;
+	visibility:hidden;
+}
+.container{
+	width: 80%;
+	min-height: 500px;
+	background: #fff;
+	margin: 0 auto;
+}
+
+li.slot-item{
+	padding: 1px 10px;
+	border: 1px solid #18a0b7;
+	border-left: 5px solid #4bcce2;
+	background-color: #fff;
+
+}
+li.slot-item:not(:last-child){
+	border-bottom-color: transparent;
+}
+
+.item-title{
+	font-size: 16px;
+	line-height: 48px;
+}
+.slot-handler p{
+	margin: 0;
+	font-size: 14px;
+}
+.avator{
+	width: 25%;
+	float: left;
+	padding-top: 15px;
+}
+.avator>img{
+	width: 100%;
+}
+.content{
+	width:75%;
+	float: left;
+	line-height: 18px;
+}
+.grouped{
+	border: 2px solid #5FB878;
+}
+.ungrouped{
+	border: 2px solid #ea7c7c;
+}
+.slot-title{
+	float: left;
+	width: 30%;
+	color: #fff;
+	padding: 10px 1px;
+	min-height: 30px;
+	font-size: 20px
+}
+.slot-title:not(:nth-child(3)){
+	margin-right: 3%;
+}
+
+.code{
+	min-height: 500px;
+	background-color: #b7d06c;
+	padding: 20px 150px;
+}
+.group{
+	text-align: center;
+	padding: 20px 40px;
+}
+.navContent{
+	max-height: 600px;
+	border: 1px solid black;
+	float: left;
+	overflow-x: hidden;
+	overflow-y: auto;
+	margin-right: 10px;
+}
+.navContent a{
+	width: 100%;
+}
+.navContent .nav-title{
+	height: 100%;
+	width: 100%;
+	background-color: #393D49;
+	text-align: center;
+	padding: 0px;
+}
+.navContent h3{
+	color: white;
+}
+.group-title{
+	background-color: #5FB878;
+	border: 2px solid #5FB878;
+	height: 20px;
+	width: 100%;
+}
+.group-title > h3{
+	color: white;
+}
+.ungrouped .group-title{
+	background-color: #FF5722;
+	border: 2px solid #ea7c7c;
+}
+
