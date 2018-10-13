@@ -5,23 +5,22 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.lzb.movie.entity.User">
     <result column="id" property="id" />
+    <result column="create_date" property="createDate" />
+    <result column="update_date" property="updateDate" />
         <result column="username" property="username" />
         <result column="password" property="password" />
         <result column="email" property="email" />
         <result column="login_flag" property="loginFlag" />
         <result column="active_flag" property="activeFlag" />
-        <result column="createdate" property="createdate" />
-        <result column="updatedate" property="updatedate" />
+        <result column="isClent" property="clent" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
     id,
-        username, password, email, login_flag AS loginFlag, active_flag AS activeFlag, createdate, updatedate
+    create_date AS createDate,
+    update_date AS updateDate,
+        username, password, email, login_flag AS loginFlag, active_flag AS activeFlag, isClent AS clent
     </sql>
-    <insert id="insert" parameterType="com.lzb.movie.entity.User">
-          insert ignore into user(username,password,email,login_flag,active_flag,createdate,updatedate) values
-          (#{username},#{password},#{email},#{loginFlag},#{activeFlag},#{createdate},#{updatedate});
-    </insert>
-    
+
 </mapper>

@@ -13,11 +13,11 @@ import java.sql.Timestamp;
 public class MyMetaObjectHandler extends MetaObjectHandler {
     @Override
     public void insertFill(MetaObject metaObject) {
-        metaObject.setValue("createDate",new Timestamp(System.currentTimeMillis()));
-        metaObject.setValue("updateDate",new Timestamp(System.currentTimeMillis()));
+        metaObject.setValue("create_date",new Timestamp(System.currentTimeMillis()));
+        metaObject.setValue("update_date",new Timestamp(System.currentTimeMillis()));
     }
     @Override
     public void updateFill(MetaObject metaObject) {
-        metaObject.setValue("updateDate",new Timestamp(System.currentTimeMillis()));
+        metaObject.setValue("update_date",new Timestamp(System.currentTimeMillis()));
     }
 }

@@ -2,7 +2,6 @@ package com.lzb.movie.entity;
 
 import java.io.Serializable;
 
-import java.util.Date;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.lzb.movie.common.base.BaseModel;
@@ -12,7 +11,7 @@ import com.lzb.movie.common.base.BaseModel;
  * 
  * </p>
  *
- * @author 
+ * @author Bingo
  * @since 2018-10-13
  */
 public class User extends BaseModel<User> {
@@ -22,12 +21,21 @@ public class User extends BaseModel<User> {
 	private String username;
 	private String password;
 	private String email;
+    /**
+     * 0代表未登录，1代表已登录
+     */
 	@TableField("login_flag")
-	private Integer loginFlag;
+	private Boolean loginFlag;
+    /**
+     * 0代表未激活，1代表已激活
+     */
 	@TableField("active_flag")
-	private Integer activeFlag;
-	private Date createdate;
-	private Date updatedate;
+	private Boolean activeFlag;
+    /**
+     * 0代表是客户，1代表是admin
+     */
+	@TableField("isClent")
+	private Boolean clent;
 
 
 	public String getUsername() {
@@ -54,36 +62,28 @@ public class User extends BaseModel<User> {
 		this.email = email;
 	}
 
-	public Integer getLoginFlag() {
+	public Boolean getLoginFlag() {
 		return loginFlag;
 	}
 
-	public void setLoginFlag(Integer loginFlag) {
+	public void setLoginFlag(Boolean loginFlag) {
 		this.loginFlag = loginFlag;
 	}
 
-	public Integer getActiveFlag() {
+	public Boolean getActiveFlag() {
 		return activeFlag;
 	}
 
-	public void setActiveFlag(Integer activeFlag) {
+	public void setActiveFlag(Boolean activeFlag) {
 		this.activeFlag = activeFlag;
 	}
 
-	public Date getCreatedate() {
-		return createdate;
+	public Boolean getClent() {
+		return clent;
 	}
 
-	public void setCreatedate(Date createdate) {
-		this.createdate = createdate;
-	}
-
-	public Date getUpdatedate() {
-		return updatedate;
-	}
-
-	public void setUpdatedate(Date updatedate) {
-		this.updatedate = updatedate;
+	public void setClent(Boolean clent) {
+		this.clent = clent;
 	}
 
 	@Override
@@ -99,8 +99,7 @@ public class User extends BaseModel<User> {
 			", email=" + email +
 			", loginFlag=" + loginFlag +
 			", activeFlag=" + activeFlag +
-			", createdate=" + createdate +
-			", updatedate=" + updatedate +
+			", clent=" + clent +
 			"}";
 	}
 }

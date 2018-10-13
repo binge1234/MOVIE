@@ -227,7 +227,7 @@ role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="model">
 		                        message: '用户名长度必须在6到12位之间'
 		                    },
 							remote:{
-								url:basePath+'/register_existCheck',
+								url:basePath+'/user/checkExistUser',
 								message: '用户已存在',
 								delay :  5000,
 								type: 'GET',
@@ -265,7 +265,14 @@ role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="model">
 							},
 	                    emailAddress: {
 	                        message: '邮箱地址格式有误'
-	                    }
+	                    },
+						remote:{
+								url:basePath+'/user/checkExistEmail',
+								message: '邮箱已被激活',
+								delay :  5000,
+								type: 'GET',
+								dataType: 'json'
+							}
 						}
 					}
 				}
@@ -278,13 +285,13 @@ role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="model">
 						if (bootstrapValidator.isValid()) {
 							var username = $('#username').val();
 							var password = $('#password').val();
-							var email = $('email').val();
+							var email = $('#email').val();
 					       
 					        $('#model').modal('show');
-					        // 获取baseUrl
+					     
 					        $.ajax({
 					            // 异步方式
-					            url: baseUrl + '/toRegister',
+					            url: baseUrl + '/user/toRegister',
 					            async: true,
 					            type: "post",
 					            datatype: 'json',

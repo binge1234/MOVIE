@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Title</title>
+    </head>
+    <body>
+       <h1>欢迎来到电影天堂，请在1分钟内完成账号激活</h1>
+            <div>您的用户名：<span th:text="${username}"></span></div>
+            <div>注册时间：<span th:text="${createDate}"></span></div>
+            <div>状态：未激活</div>
+              <a th:href="'@{/user/activeUser/id='+${id}+'}'">激活账号</a>
+              <a th:href="'/user/activeUser/id='+${id}">激活账号2</a>
+    </body>
+</html>

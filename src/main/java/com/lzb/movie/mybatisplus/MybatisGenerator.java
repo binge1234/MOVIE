@@ -55,7 +55,7 @@ import java.util.Map;
  */
 public class MybatisGenerator {
 
-    private static String authorName="Mankind";     //作者
+    private static String authorName="Bingo";     //作者
     private static String[] tables=new String[]{"user"};                  //table名字
     //private static String prefix="sc_";                     //table前缀
     private static String path=System.getProperty("user.dir");

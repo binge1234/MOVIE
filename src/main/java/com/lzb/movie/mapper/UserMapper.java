@@ -8,10 +8,9 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  *  Mapper 接口
  * </p>
  *
- * @author Mankind
+ * @author Bingo
  * @since 2018-10-13
  */
 public interface UserMapper extends BaseMapper<User> {
-     
-	public Integer insert(User user);
+
 }

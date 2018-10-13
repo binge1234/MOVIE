@@ -21,12 +21,12 @@ public abstract class BaseModel<T extends Model> extends Model<T> implements Ser
     /**
      * 创建时间
      */
-    @TableField(value = "createDate",fill = FieldFill.INSERT,strategy= FieldStrategy.IGNORED)
+    @TableField(value = "create_date",fill = FieldFill.INSERT,strategy= FieldStrategy.IGNORED)
     protected Timestamp createDate;
     /**
      * 更新时间
      */
-    @TableField(value = "updateDate",fill = FieldFill.INSERT_UPDATE,strategy= FieldStrategy.IGNORED)
+    @TableField(value = "update_date",fill = FieldFill.INSERT_UPDATE,strategy= FieldStrategy.IGNORED)
     protected Timestamp updateDate;
 
     public Long getId() {
