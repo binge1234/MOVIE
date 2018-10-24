@@ -9,7 +9,8 @@
             <div>您的用户名：<span th:text="${username}"></span></div>
             <div>注册时间：<span th:text="${createDate}"></span></div>
             <div>状态：未激活</div>
-              <a th:href="@{/user/activeUser}">激活账号2</a>
+              <a th:href="@{${#httpServletRequest.getContextPath()} + '/user/active/id='+${id}}">激活账号</a>
+              <a th:href="'/user/activeUser/id='+${id}">激活账号2</a>
     </body>
 </html>
 

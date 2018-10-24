@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lzb.movie.mapper.MovieMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.lzb.movie.entity.Movie">
+    <result column="id" property="id" />
+    <result column="create_date" property="createDate" />
+    <result column="update_date" property="updateDate" />
+        <result column="postUrl" property="postUrl" />
+        <result column="imgUrl" property="imgUrl" />
+        <result column="downpath" property="downpath" />
+        <result column="chinesetitle" property="chinesetitle" />
+        <result column="englishtitle" property="englishtitle" />
+        <result column="time" property="time" />
+        <result column="place" property="place" />
+        <result column="category" property="category" />
+        <result column="director" property="director" />
+        <result column="star" property="star" />
+        <result column="description" property="description" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+    id,
+    create_date AS createDate,
+    update_date AS updateDate,
+        postUrl, imgUrl, downpath, chinesetitle, englishtitle, time, place, category, director, star, description
+    </sql>
+    
+    <insert id="insert" parameterType="com.lzb.movie.entity.Movie">
+     insert ignore into movie(posturl,imgurl,downpath,chinesetitle,englishtitle,time,place,director,star,description)
+     value(#{posturl},#{imgurl},#{downpath},#{chinesetitle},#{englishtitle},#{time},#{place},#{category},
+     #{director},#{star},#{description},#{create_date},#{update_date});
+    </insert>
+
+</mapper>

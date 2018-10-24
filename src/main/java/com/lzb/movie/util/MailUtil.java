@@ -16,6 +16,7 @@ import org.springframework.util.ClassUtils;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.context.IWebContext;
+import org.thymeleaf.context.WebContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

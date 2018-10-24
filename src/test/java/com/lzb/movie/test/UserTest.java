@@ -27,36 +27,36 @@ public class UserTest {
     UserService userService = new UserServiceImpl();
     @Autowired
     MailUtil mailutil;
-//    @Test
-//    public void testUser() {
-//    	User user = new User();
-//    	user.setActiveFlag(true);
-//    	user.setLoginFlag(true);
-//    	user.setEmail("1127832473@qq.com");
-//    	user.setUsername("tom");
-//    	user.setClent(true);
-//    	user.setPassword("123");
-//        
-//    	try {
-//			Map<String,Object> map =MapTool.convertBean(user);
-//			mailutil.sendTemplateMail( map);
-//		} catch (IllegalAccessException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (InvocationTargetException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (IntrospectionException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//    }
-    
     @Test
-    public void pathTest() {
-    	String path = ClassUtils.getDefaultClassLoader().getResource("").getPath();
-    	String name = 
-    			SpringContextHolder.getApplicationContext().getApplicationName();
-    	System.out.println(name);
+    public void testUser() {
+    	User user = new User();
+    	user.setActiveFlag(true);
+    	user.setLoginFlag(true);
+    	user.setEmail("1127832473@qq.com");
+    	user.setUsername("tom");
+    	user.setClent(true);
+    	user.setPassword("123");
+        
+    	try {
+			Map<String,Object> map =MapTool.convertBean(user);
+			mailutil.sendTemplateMail( map);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IntrospectionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
+    
+//    @Test
+//    public void pathTest() {
+//    	String path = ClassUtils.getDefaultClassLoader().getResource("").getPath();
+//
+//    			
+//    	System.out.println(path);
+//    }
 }

@@ -3,123 +3,128 @@
 <head>
 <title>电影天堂</title>
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="css/login.css">
-<link rel="stylesheet" href="../../bootstrap/css/bootstrapValidator.min.css">
-<script src="../../jquery/jquery.min.js"></script>
-<script src="../../bootstrap/js/bootstrap.min.js"></script>
-<script src="../../bootstrap/js/bootstrapValidator.min.js"></script>
+ <span th:include="/common/head::html"></span>
 </head>
 <style>
-img
-{
-	width:auto;
-	height:auto;
-	max-width:100%;
-	max-height:100%;
+img {
+	width: auto;
+	height: auto;
+	max-width: 100%;
+	max-height: 100%;
 }
-body{
-	overflow-y:hidden;
+
+body {
+	overflow-y: hidden;
 }
-#page{
-  position:absolute;
-  width:100%;
+
+#page {
+	position: absolute;
+	width: 100%;
 }
-.container-content
-{
-	padding-top:60px;
+
+.container-content {
+	padding-top: 60px;
 	color: #fff;
 }
-.overlay
-{
-    z-index: 1;
-    position: absolute;
-    bottom: 0;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.5);
+
+.overlay {
+	z-index: 1;
+	position: absolute;
+	bottom: 0;
+	top: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.5);
 }
+
 .form-wrap {
-    border-top: 10px solid #FBB448;
-    position: relative;
-    width: 100%;
-    -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.15);
-    -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.15);
-    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.15);
+	border-top: 10px solid #FBB448;
+	position: relative;
+	width: 100%;
+	-webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.15);
+	-moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.15);
+	box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.15);
 }
+
 .form-wrap .tab-content {
-    z-index: 10;
-    position: relative;
-    clear: both;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 30px;
+	z-index: 10;
+	position: relative;
+	clear: both;
+	background: rgba(0, 0, 0, 0.5);
+	padding: 30px;
 }
-.form-wrap label{
-	font-size:15px;
+
+.form-wrap label {
+	font-size: 15px;
 }
-.form-wrap h3{
-	padding-bottom:20px;
+
+.form-wrap h3 {
+	padding-bottom: 20px;
 }
+
 .form-control {
-    display: block;
-    width: 100%;
-    height: 30px;
-    padding: 15px 20px;
-    font-size: 14px;
-    line-height: 1.42857;
-    color: #fff !important;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    background: transparent;
+	display: block;
+	width: 100%;
+	height: 30px;
+	padding: 15px 20px;
+	font-size: 14px;
+	line-height: 1.42857;
+	color: #fff !important;
+	border: 2px solid rgba(255, 255, 255, 0.2);
+	background: transparent;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	-webkit-transition: border-color ease-in-out 0.15s, box-shadow
+		ease-in-out 0.15s;
+	-o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out
+		0.15s;
+	transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
 
-    border-radius: 4px;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-    -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-    -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+.form-group {
+	padding: 3px 0;
 }
-.form-group{
-	padding:3px 0;
-}
+
 .btn-primary {
-    background: #FBB448;
-    color: #fff;
-    border: 2px solid #FBB448 !important;
-}
-.button-group{
-	margin-top:45px;
-}
-.small-graph{
-	color:#fff;
-	padding:0 40px;
-	font-size:13px;
-}
-.select
-{
-    display: inline;
-    width: 28%;
-    height: 30px;
-    font-size: 14px;
-    line-height: 1.42857;
-    color: #fff !important;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    background: transparent;
-    border-radius: 4px;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-    -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-    -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-}
-.select option
-{
-    background-color:#000;
-    color: #fff !important;
+	background: #FBB448;
+	color: #fff;
+	border: 2px solid #FBB448 !important;
 }
 
+.button-group {
+	margin-top: 45px;
+}
+
+.small-graph {
+	color: #fff;
+	padding: 0 40px;
+	font-size: 13px;
+}
+
+.select {
+	display: inline;
+	width: 28%;
+	height: 30px;
+	font-size: 14px;
+	line-height: 1.42857;
+	color: #fff !important;
+	border: 2px solid rgba(255, 255, 255, 0.2);
+	background: transparent;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	-webkit-transition: border-color ease-in-out 0.15s, box-shadow
+		ease-in-out 0.15s;
+	-o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out
+		0.15s;
+	transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+.select option {
+	background-color: #000;
+	color: #fff !important;
+}
 </style>
 <body>
 	<div id="page">
@@ -156,6 +161,16 @@ body{
 													class="glyphicon glyphicon-lock form-control-feedback small-graph"></span>
 												<input type="password" name="password" class="form-control"
 													placeholder="输入密码">
+											</div>
+										</div>
+										<div class="col-sm-11">
+											<div>
+									     <img src="${pageContext.request.contextPath}/kaptcha-image"
+											id="kaptchaImage"
+											onclick="this.src='${pageContext.request.contextPath}/kaptcha-image?time='+new Date().getTime()" />
+												</td>
+												<td><input class="col-sm-4" style="height: 40px;"
+													type="text" name="code" id="code" />
 											</div>
 										</div>
 								</div>

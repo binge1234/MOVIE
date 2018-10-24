@@ -1,5 +1,6 @@
 package com.lzb.movie.util;
 
+
 /**
  * @描述: 字符串操作工具
  * @作者: Pengo.Wen
@@ -64,6 +65,16 @@ public class StringTool {
             if (obj == null)
                 return false;
         return true;
+    }
+    
+    public static String clearBlank(Object object) {
+        if (object == null){
+            return "";
+        }
+        if (StringTool.isBlank(String.valueOf(object))){
+            return "";
+        }
+        return (String)object.toString().trim();
     }
 
 }
