@@ -20,4 +20,8 @@ public class MyMetaObjectHandler extends MetaObjectHandler {
     public void updateFill(MetaObject metaObject) {
         metaObject.setValue("update_date",new Timestamp(System.currentTimeMillis()));
     }
+    
+    
+    
+        
 }

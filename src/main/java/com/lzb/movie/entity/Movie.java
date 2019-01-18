@@ -17,33 +17,33 @@ public class Movie extends BaseModel<Movie> {
 
     private static final long serialVersionUID = 1L;
 
-	private String postUrl;
-	private String imgUrl;
-	private String downpath;
-	private String chinesetitle;
-	private String englishtitle;
-	private String time;
-	private String place;
-	private String category;
-	private String director;
-	private String star;
-	private String description;
+	private String posturl;//电影url
+	private String imgurl;//图片地址
+	private String downpath;//电影下载地址
+	private String chinesetitle;//中文译名
+	private String englishtitle;//英文名
+	private String time;//年代
+	private String place;//产地
+	private String category;//类别
+	private String director;//导演
+	private String star;//明星
+	private String description;//电影简介
 
 
-	public String getPostUrl() {
-		return postUrl;
+	public String getPosturl() {
+		return posturl;
 	}
 
-	public void setPostUrl(String postUrl) {
-		this.postUrl = postUrl;
+	public void setPosturl(String postUrl) {
+		this.posturl = postUrl;
 	}
 
-	public String getImgUrl() {
-		return imgUrl;
+	public String getImgurl() {
+		return imgurl;
 	}
 
-	public void setImgUrl(String imgUrl) {
-		this.imgUrl = imgUrl;
+	public void setImgurl(String imgUrl) {
+		this.imgurl = imgUrl;
 	}
 
 	public String getDownpath() {
@@ -126,8 +126,8 @@ public class Movie extends BaseModel<Movie> {
 	@Override
 	public String toString() {
 		return "Movie{" +
-			"postUrl=" + postUrl +
-			", imgUrl=" + imgUrl +
+			"postUrl=" + posturl +
+			", imgUrl=" + imgurl +
 			", downpath=" + downpath +
 			", chinesetitle=" + chinesetitle +
 			", englishtitle=" + englishtitle +

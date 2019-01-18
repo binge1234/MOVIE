@@ -7,8 +7,8 @@
     <result column="id" property="id" />
     <result column="create_date" property="createDate" />
     <result column="update_date" property="updateDate" />
-        <result column="postUrl" property="postUrl" />
-        <result column="imgUrl" property="imgUrl" />
+        <result column="posturl" property="posturl" />
+        <result column="imgurl" property="imgurl" />
         <result column="downpath" property="downpath" />
         <result column="chinesetitle" property="chinesetitle" />
         <result column="englishtitle" property="englishtitle" />
@@ -29,9 +29,9 @@
     </sql>
     
     <insert id="insert" parameterType="com.lzb.movie.entity.Movie">
-     insert ignore into movie(posturl,imgurl,downpath,chinesetitle,englishtitle,time,place,director,star,description)
+     insert ignore into movie(posturl,imgurl,downpath,chinesetitle,englishtitle,time,place,category,director,star,description)
      value(#{posturl},#{imgurl},#{downpath},#{chinesetitle},#{englishtitle},#{time},#{place},#{category},
-     #{director},#{star},#{description},#{create_date},#{update_date});
+     #{director},#{star},#{description});
     </insert>
 
 </mapper>

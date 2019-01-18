@@ -27,6 +27,6 @@ public class SpiderTest {
         spider.addUrl("http://www.ygdy8.com/html/gndy/dyzz/list_23_1.html")
                 .addPipeline((Pipeline)spiderService)
                 .thread(1)
-                .start();
+                .run();
 	}
 }

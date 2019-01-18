@@ -14,6 +14,7 @@ import javax.mail.Flags.Flag;
 import org.apache.log4j.helpers.FileWatchdog;
 import org.springframework.stereotype.Component;
 
+import com.lzb.movie.common.constant.SpiderDict;
 import com.lzb.movie.entity.Movie;
 import com.lzb.movie.util.FileUtil;
 import com.lzb.movie.util.ReUtil;
@@ -32,10 +33,7 @@ public class MovieProcessor implements PageProcessor {
 	private Site site = Site.me().setCharset("GB2312").setRetryTimes(3).setSleepTime(100);
 	private static final String URL_POST = "(http://www\\.ygdy8\\.com/html/(\\w+)/(\\w+)/(\\d+)/(\\d+)\\.html)";
     private static final String Next = "下一页";
-//    private static File file = new File("H:\\movie.txt");
-//    private static int Flag = 1; 
-//    private FileWriter writer ;
-    
+
 	@Override
 	public Site getSite() {
 		// TODO Auto-generated method stub
@@ -46,41 +44,41 @@ public class MovieProcessor implements PageProcessor {
 	public void process(Page page) {
 		// TODO Auto-generated method stub
        List<String> topList = page.getHtml()
-        .xpath("//*[@id=\"header\"]/div/div[3]/div[3]/div[2]/div[2]/div[2]")
+        .xpath(SpiderDict.NewList_REGIX)
         .links()
-        .regex(URL_POST)
+        .regex(SpiderDict.NewUrl_REGIX)
         .all();
        page.addTargetRequests(topList);
        
        String pageUrl = null;
        
        if(page.getHtml()
-     		    .xpath("//*[@id=\"header\"]/div/div[3]/div[3]/div[2]/div[2]/div[2]/div/a[7]/text()")
+     		    .xpath(SpiderDict.NextText1_REGIX)
 		        .get() != null && page.getHtml()
-      		    .xpath("//*[@id=\"header\"]/div/div[3]/div[3]/div[2]/div[2]/div[2]/div/a[7]/text()")
+      		    .xpath(SpiderDict.NextText1_REGIX)
 		        .get().equals(Next)) {//
        	pageUrl =  page.getHtml()
-          		      .xpath("//*[@id=\"header\"]/div/div[3]/div[3]/div[2]/div[2]/div[2]/div/a[7]/@href")
+          		      .xpath(SpiderDict.NextUrl1_REGIX)
    		          .get();
        	 page.addTargetRequest(pageUrl);
        	
        }
        
        if(page.getHtml()
-    		    .xpath("//*[@id=\"header\"]/div/div[3]/div[3]/div[2]/div[2]/div[2]/div/a[9]/text()")
+    		    .xpath(SpiderDict.NextText2_REGIX)
 		        .get() != null && page.getHtml()
-     		    .xpath("//*[@id=\"header\"]/div/div[3]/div[3]/div[2]/div[2]/div[2]/div/a[9]/text()")
+     		    .xpath(SpiderDict.NextText2_REGIX)
 		        .get().equals(Next)) {//
       	pageUrl =  page.getHtml()
-         		      .xpath("//*[@id=\"header\"]/div/div[3]/div[3]/div[2]/div[2]/div[2]/div/a[9]/@href")
+         		      .xpath(SpiderDict.NextUrl2_REGIX)
   		          .get();
       	 page.addTargetRequest(pageUrl);
       	
       }
        
-       Selectable content = page.getHtml().xpath("//*[@id=\"Zoom\"]/span");
+       Selectable content = page.getHtml().xpath(SpiderDict.MovieContent_REGIX);
        
-       if(page.getUrl().regex(URL_POST).match() || page.getUrl().regex(URL_POST).match()) {
+       if(page.getUrl().regex(SpiderDict.NewUrl_REGIX).match() || page.getUrl().regex(SpiderDict.New_URL).match()) {
            //远程页面获取的数据
     	   String[] cntAry = StringTool.clearBlank(ReUtil.get("(年　　代).*(<strong>)", StringTool.clearBlank(content.toString()),0)).split("<br>◎");
            String postUrl = page.getUrl().toString().replace("http://www.ygdy8.com/html/","");  
@@ -130,7 +128,7 @@ public class MovieProcessor implements PageProcessor {
            String downPath = StringTool.clearBlank(content.css("a","href").toString());
            
            Movie movie = new Movie();//将电影数据存入数据库中
-           movie.setImgUrl(topImgUrl);
+           movie.setImgurl(topImgUrl);
            movie.setDownpath(downPath);
            movie.setChinesetitle(ChineseTitle);
            movie.setEnglishtitle(EnglishTitle);
@@ -140,7 +138,7 @@ public class MovieProcessor implements PageProcessor {
            movie.setDirector(director);
            movie.setStar(star);
            movie.setDescription(description);
-           movie.setPostUrl(postUrl);
+           movie.setPosturl(postUrl);
            
            if (StringTool.isBlank(downPath)){
                page.setSkip(true);

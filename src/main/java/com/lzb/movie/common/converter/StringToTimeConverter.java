@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by lzb on 2018/1/30.
  */
-public class    StringToTimeConverter {
+public class StringToTimeConverter {
     private static final List<String> formarts = new ArrayList<>(4);
     static{
         formarts.add("yyyy-MM");

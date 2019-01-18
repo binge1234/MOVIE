@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
- * Created by Mankind on 2018/1/30.
+ * Created by lizb on 2018/1/30.
  */
 public abstract class BaseModel<T extends Model> extends Model<T> implements Serializable {
 
