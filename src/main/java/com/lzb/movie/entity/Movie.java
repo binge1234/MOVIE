@@ -13,7 +13,7 @@ import com.lzb.movie.common.base.BaseModel;
  * @author Bingo
  * @since 2018-10-24
  */
-public class Movie extends BaseModel<Movie> {
+public class Movie extends BaseModel<Movie>{
 
     private static final long serialVersionUID = 1L;
 

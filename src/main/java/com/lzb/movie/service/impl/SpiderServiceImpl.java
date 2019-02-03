@@ -1,16 +1,12 @@
 package com.lzb.movie.service.impl;
 
-import java.util.Stack;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.fasterxml.classmate.util.ResolvedTypeCache.Key;
 import com.lzb.movie.entity.Movie;
 import com.lzb.movie.mapper.MovieMapper;
 import com.lzb.movie.service.SpiderService;
-import com.lzb.movie.util.RedisUtil;
 
 import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Task;
@@ -19,11 +15,11 @@ import us.codecraft.webmagic.pipeline.Pipeline;
 
 @Service
 public class SpiderServiceImpl extends ServiceImpl<MovieMapper, Movie> implements SpiderService,Pipeline{
-	@Autowired
-	private MovieMapper movieMapper;
+
+
 	
-	@Autowired
-	private RedisUtil redisUtil;
+//	@Autowired
+//	private RedisUtil redisUtil;
 	
 	public static final String key = "movie";
 
@@ -36,7 +32,7 @@ public class SpiderServiceImpl extends ServiceImpl<MovieMapper, Movie> implement
                String url = movie.getPosturl();
                String suffix_url = movie.getPosturl().substring(url.length()-10, url.length());//获取url上能够唯一确定电影的数字。           
                Double score = Double.valueOf(suffix_url);
-               redisUtil.zAdd(key,movie,score);
+//               redisUtil.zAdd(key,movie,score);
             }catch (Exception e){
                 e.printStackTrace();
             }

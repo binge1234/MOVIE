@@ -1,7 +1,5 @@
 package com.lzb.movie.spider;
 
-import static org.junit.Assert.assertNotNull;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;

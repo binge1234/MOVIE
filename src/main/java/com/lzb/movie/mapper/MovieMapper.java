@@ -2,6 +2,7 @@ package com.lzb.movie.mapper;
 
 import com.lzb.movie.entity.Movie;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
+import org.springframework.stereotype.Repository;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  * @author Bingo
  * @since 2018-10-24
  */
+@Repository
 public interface MovieMapper extends BaseMapper<Movie> {
 
 }

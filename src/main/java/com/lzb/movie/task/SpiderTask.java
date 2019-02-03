@@ -1,28 +1,18 @@
 package com.lzb.movie.task;
 
-import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import com.lzb.movie.entity.Movie;
 import com.lzb.movie.service.SpiderService;
-import com.lzb.movie.spider.MovieProcessor;
-import com.lzb.movie.util.RedisUtil;
 
-import groovy.util.logging.Log4j;
-import us.codecraft.webmagic.Spider;
-import us.codecraft.webmagic.pipeline.Pipeline;
 
-@Log4j
 @Component
 public class SpiderTask {
 	   @Autowired
 	    private SpiderService spiderService;
 	   
-	   @Autowired
-	   private RedisUtil redisUtil;
+//	   @Autowired
+//	   private RedisUtil redisUtil;
 
 //	    @Scheduled(cron = "0 0 24 * * *")
 //	    private void crawlTask(){//每天晚上24点开始爬取电影资源存进redis中，并且将结果发送到管理员的邮箱。

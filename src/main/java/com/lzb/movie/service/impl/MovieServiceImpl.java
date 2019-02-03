@@ -1,9 +1,9 @@
 package com.lzb.movie.service.impl;
 
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.lzb.movie.entity.Movie;
 import com.lzb.movie.mapper.MovieMapper;
 import com.lzb.movie.service.MovieService;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**

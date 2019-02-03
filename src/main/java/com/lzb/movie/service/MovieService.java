@@ -2,6 +2,7 @@ package com.lzb.movie.service;
 
 import com.lzb.movie.entity.Movie;
 import com.baomidou.mybatisplus.service.IService;
+import org.springframework.stereotype.Repository;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.service.IService;
  * @author Bingo
  * @since 2018-10-24
  */
+
 public interface MovieService extends IService<Movie> {
 
 }
